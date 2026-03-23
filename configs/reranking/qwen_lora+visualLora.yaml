@@ -1,0 +1,40 @@
+MODEL:
+  PRETRAINED_MODEL_DIR: "/home/ljc/works/qwen-reid/pretrained/Qwen/Qwen2-VL-2B-Instruct"
+
+INPUT:
+  IMAGE_SIZE: [280, 140]
+
+DATASETS:
+  NAME: "pairwise_reranking"
+  PROMPT_TEMPLATE: 'prompt_template.json'
+  PAIRWISE_TRAINSET_PATH: "" # fill in CLI
+  PAIRWISE_TRAINSET_TRUNCATE_RATIO: 0.5
+  PAIRWISE_VALSET_PATH: "" # fill in CLI
+
+DATALOADER:
+  NUM_WORKERS: 8
+  MAX_ITER: -1
+
+SOLVER:
+  BATCHSIZE: 2
+  OPTIMIZER_NAME: "AdamW"
+  MAX_EPOCHS: 20
+  BASE_LR: 5e-5
+  WEIGHT_DECAY: 0.0
+  LR_MIN: 1e-6
+  WARMUP_LR_INIT: 5e-5
+  WARMUP_T: 0
+  EVAL_PERIOD: 5
+  CHECKPOINT_PERIOD: 5
+  TBX_LOG_PERIOD: 10
+
+LORA:
+  TARGET_MODULES: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj", "mlp.fc1", "mlp.fc2"]
+  RANK: 16
+  ALPHA: 32
+  DROPOUT: 0.05
+
+TEST:
+  BATCHSIZE: 2
+
+OUTPUT_DIR: "/home/ljc/works/qwen-reid/logs/debug"

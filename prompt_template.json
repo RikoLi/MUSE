@@ -1,0 +1,15 @@
+{
+    "task_description": "You are an expert in person recognition. I will give you a query and a candidate image, captioned by \"Query:\" and \"Candidate:\" independently. Please tell me whether the people in the two images have the same identity. ",
+    "rules": [
+        " You should distinguish the people identities based on following criteria:",
+        "1. appearance (e.g., age, gender, hair style, hair color, face, body shape, etc.)",
+        "2. clothing and wearing (e.g. clothing type, color, style, pattern, etc.)",
+        "3. carried objects (e.g. bags, hats, glasses, accessories, etc.)",
+        "Please keep in mind that you should never rely on following attributes:",
+        "1. background (e.g., location, time, etc.)",
+        "2. human pose (e.g. standing, sitting, walking, etc.)",
+        "3. occlusion (e.g. covered face, covered body, etc.)",
+        "4. camera angle (e.g. front view, side view, back view, etc.)"
+    ],
+    "response_format": "Respond with \"Yes\" if the query and the candidate images have the same identity, otherwise respond with \"No\"."
+}

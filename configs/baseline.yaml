@@ -1,0 +1,48 @@
+MODEL:
+  NAME: 'ViT-B-16'
+  STRIDE_SIZE: [16, 16]
+  ID_LOSS_WEIGHT : 1.0
+  PCL_LOSS_WEIGHT: 1.0
+  FREEZE_PATCH_PROJ: true
+
+INPUT:
+  SIZE_TRAIN: [256, 128]
+  SIZE_TEST: [256, 128]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+
+DATALOADER:
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+
+SOLVER:
+  IMS_PER_BATCH: 32
+  OPTIMIZER_NAME: "AdamW"
+  BASE_LR: 5e-6
+  WARMUP_METHOD: 'linear'
+  WARMUP_ITERS: 10
+  WARMUP_FACTOR: 0.1
+  WEIGHT_DECAY:  1e-4
+  MAX_EPOCHS: 60
+  EVAL_PERIOD: 60
+  STEPS: [30, 50]
+  GAMMA: 0.1
+
+PCL:
+  MEMORY_MOMENTUM: 0.2
+  HARD_MEMORY_UPDATE: true
+  MEMORY_TEMP: 0.01
+
+TEST:
+  RE_RANKING: false
+  FEAT_NORM: true
+  AFTER_BN: true
+
+DATASETS:
+  ROOT_DIR: "/home/ljc/datasets"
+  NAMES: ("market1501",)
+  EVAL_DATASET: "msmt17"
+OUTPUT_DIR: "/home/ljc/works/qwen-reid/logs/debug"

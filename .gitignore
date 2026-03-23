@@ -1,0 +1,56 @@
+# 项目特定目录或符号链接
+blobs
+logs
+pretrained
+data
+
+# Python 缓存
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Python 分发
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv
+
+# IDE 和编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# 测试和覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# 日志文件
+*.log
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+*.cache
